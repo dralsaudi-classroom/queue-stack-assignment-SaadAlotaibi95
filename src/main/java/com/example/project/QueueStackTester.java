@@ -2,11 +2,11 @@ package main.java.com.example.project;
 
 public class QueueStackTester {
     public static <T> void split(Queue<T> q, Queue<T> oq, Queue<T> eq)
-    {   
-        if (q.length() == 0)
-        	return;
-        
+    {        
         int indexCount = oq.length() + eq.length() ;
+        
+        if (indexCount == q.length())
+        	return;
         
         T e = q.serve();
         if (indexCount%2 == 0) {
@@ -17,10 +17,11 @@ public class QueueStackTester {
         	if(!eq.full())
         	   eq.enqueue(e);
         }	
+        q.enqueue(e);
         
         split(q, oq, eq);
         
-        q.enqueue(e);
+        
     }
     public static <T> void remove(LinkedPQ<T> pq, int p)
     {
@@ -28,7 +29,7 @@ public class QueueStackTester {
     	   return;
         
        PQElement<T> e = null;
-        LinkedPQ<T> temp = new LinkedPQ<T>();
+       LinkedPQ<T> temp = new LinkedPQ<T>();
        
         for(int i = pq.length(); i>0; i--) {
             e = pq.serve();

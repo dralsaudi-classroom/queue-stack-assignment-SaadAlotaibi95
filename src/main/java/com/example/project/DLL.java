@@ -69,6 +69,7 @@ public class DLL<T> {
     	DLLNode element1 = null;
     	DLLNode element2 = null;
     	
+    	DLLNode temp = current;
     	current = head;
     	while(current!=null) {
     		if(element1 == null) {
@@ -86,5 +87,6 @@ public class DLL<T> {
     		}
     		current = current.next;	
     	}
+     current = temp;
     }
 }
